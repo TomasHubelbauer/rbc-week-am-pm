@@ -1,28 +1,37 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import BigCalendar from 'react-big-calendar';
+import moment from 'moment';
+import 'react-big-calendar/lib/css/react-big-calendar.css';
 
-class App extends Component {
-  render() {
+type AppProps = {};
+
+type AppState = {
+  events: CalendarEvent[];
+};
+
+type CalendarEvent = { start: Date, end: Date };
+
+export default class App extends React.Component<AppProps, AppState> {
+  public readonly state: AppState = {
+    events: [],
+  };
+
+  private readonly localizer = BigCalendar.momentLocalizer(moment);
+
+  public render() {
+    const min = moment().set({ hour: 0, minute: 0, second: 0, millisecond: 0 }).toDate();
+    const max = moment().set({ hour: 12, minute: 0, second: 0, millisecond: 0 }).toDate();
+    console.log({ min, max });
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.tsx</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <BigCalendar<CalendarEvent>
+          localizer={this.localizer}
+          events={this.state.events}
+          view="week"
+          min={min}
+          max={max}
+        />
       </div>
     );
   }
 }
-
-export default App;

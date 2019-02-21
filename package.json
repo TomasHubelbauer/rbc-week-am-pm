@@ -7,7 +7,9 @@
     "@types/node": "11.9.4",
     "@types/react": "16.8.4",
     "@types/react-dom": "16.8.2",
+    "moment": "^2.24.0",
     "react": "^16.8.2",
+    "react-big-calendar": "^0.20.3",
     "react-dom": "^16.8.2",
     "react-scripts": "2.1.5",
     "typescript": "3.3.3"
@@ -26,5 +28,9 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "homepage": "https://tomashubelbauer.github.io/rbc-week-am-pm-clock",
+  "devDependencies": {
+    "@types/react-big-calendar": "^0.20.6"
+  }
 }
